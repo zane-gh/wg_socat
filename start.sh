@@ -1,11 +1,7 @@
 #!/bin/bash
 
-exec /init
-
-if [ $# -eq 0 ]; then
-  exit 0
+if [ -n "$SOCAT_CMD" ]; then
+  eval "$SOCAT_CMD" &
 fi
 
-socat "$@" &
-
-exit 0
+exec /init
